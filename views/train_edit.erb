@@ -1,0 +1,11 @@
+<h1>Update train number: <%=@train.train_number() %> </h1>
+
+<form action="/operator/train/list/<%= @train.id() %>" method="post">
+  <input name="_method" type="hidden" value="patch">
+  <label for="train_number">Update train number:</label>
+  <input id="train_number" name="train_number" type="text" value="<%= @train.train_number%>">
+  <label for="nickname">Update train nickname:</label>
+  <input id="nickname" name="nickname" type="text" value="<%= @train.nickname%>">
+
+  <button type="submit">Update</button>
+</form>

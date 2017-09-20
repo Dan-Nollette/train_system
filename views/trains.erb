@@ -1,3 +1,19 @@
 <h1>Hello System Operator</h1>
 <br>
 <h3>This is the trains page</h3>
+
+<%if (@trains != []) %>
+  <% @trains.each do |train| %>
+    <p>Train Number: <%=train.train_number%></p>
+    <p>Train Nickname: <%=train.nickname%></p>
+    <a href="/operator/train/train_edit/<%=train.id%>">Update</a>
+    <form action="/operator/train/list/<%= train.id() %>" method="post">
+      <input name="_method" type="hidden" value="delete">
+      <button type="submit" name="button">Delete</button>
+    </form>
+  <%end%>
+<%else%>
+  <p>There are currently no trains saved.</p>
+<%end%>
+
+<a href="/operator/train/new">Add a train</a>
